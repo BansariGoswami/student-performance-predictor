@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Marks Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 450px;
+        }
+        h2 {
+            text-align: center;
+            color: #333333;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555555;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #2b7a78;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #205e5c;
+        }
+        .result {
+            margin-top: 25px;
+            padding: 15px;
+            background-color: #e8f5e9;
+            border: 1px solid #c8e6c9;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Student Score Predictor</h2>
+    <form action="/predict" method="POST">
+        <div class="form-group">
+            <label for="study_hours">Study Hours / Day:</label>
+            <input type="number" step="any" id="study_hours" name="Study_Hours" required value="{{ request.form.get('Study_Hours', '') }}">
+        </div>
+
+        <div class="form-group">
+            <label for="attendance">Attendance Percentage (%):</label>
+            <input type="number" step="any" id="attendance" name="Attendance_Pct" required value="{{ request.form.get('Attendance_Pct', '') }}">
+        </div>
+
+        <div class="form-group">
+            <label for="previous_score">Previous Exam Score:</label>
+            <input type="number" step="any" id="previous_score" name="Previous_Score" required value="{{ request.form.get('Previous_Score', '') }}">
+        </div>
+
+        <div class="form-group">
+            <label for="sleep_hours">Sleep Hours / Night:</label>
+            <input type="number" step="any" id="sleep_hours" name="Sleep_Hours" required value="{{ request.form.get('Sleep_Hours', '') }}">
+        </div>
+
+        <button type="submit">Predict Final Marks</button>
+    </form>
+
+    {% if pred %}
+    <div class="result">
+        {{ pred }}
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
