@@ -8,6 +8,12 @@ The **Student Score Predictor** is a beginner-friendly Machine Learning project 
 
 The project demonstrates how a Machine Learning model can be integrated into a web application to make predictions through a simple and user-friendly interface.
 
+## 🖼️ Project Screenshot
+
+Here is a preview of the Student Score Predictor web application.
+
+![Student Score Predictor showing input fields and predicted final score](student-score-predictor.png)
+
 ## ✨ Key Features
 
 - Predicts students' final scores using Machine Learning.
